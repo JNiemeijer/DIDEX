@@ -164,10 +164,10 @@ def save_result(result, output_file_path, original_size):
     result_image = result[1].resize(original_size)
     result_image.save(output_file_path)
 
-prompt_1 = "A high quality photo; europe" # of a german traffic scene"
+prompt_1 = "A high quality photo; europe" 
 prompt_2 = "A high quality photo; europe;Highway"
 prompt_3 = "A high quality photo; europe;City"
-prompt_4 = "A high quality photo; germany" # of a german traffic scene"
+prompt_4 = "A high quality photo; germany" 
 prompt_5 = "A high quality photo; germany;Highway"
 prompt_6 = "A high quality photo; germany;City"
 promts=[prompt_1,prompt_2,prompt_3,prompt_4,prompt_5,prompt_6]
