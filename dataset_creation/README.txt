@@ -1,0 +1,1 @@
+This folder contains scripts that can be integrated into stable diffusion to generate the Pseudo Target domains
