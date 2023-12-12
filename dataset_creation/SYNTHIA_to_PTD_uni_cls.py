@@ -151,8 +151,8 @@ import random
 def process_image(file_path, prompt, ddim_steps, num_samples, scale, seed, eta, strength):
     input_image = Image.open(file_path)
     width, height = input_image.size
-    new_width = int(width * 0.5)
-    new_height = int(height * 0.5)
+    new_width = int(width)# * 0.5)
+    new_height = int(height)# * 0.5)
     # Resize the image
     input_image = input_image.resize((new_width, new_height))
 
@@ -164,47 +164,13 @@ def save_result(result, output_file_path, original_size):
     result_image = result[1].resize(original_size)
     result_image.save(output_file_path)
 
-
-codition_1 = "rain"
-codition_2 = "Fog/Mist"
-codition_3 = "Snowy"
-codition_4 = "Sunny"
-codition_5 = "Overcast"
-codition_6 = "Stormy"
-codition_7 = "overexposure"
-codition_8 = "underexposure"
-codition_9 = "evening"
-codition_10 = "morning"
-codition_11 = "Night/Darkness"
-codition_12 = "Backlighting"
-codition_13 = "Artificial Lighting"
-codition_14 = "Harsh Light"
-codition_15 = "Dappled Light"
-codition_16 = "Sun Flare"
-codition_17 = "Hazy/Haze"
-codition_18 = "Spring"
-codition_19 = "Autumn"
-codition_20 = "Winter"
-codition_21 = "Summer"
-coditions=[codition_1,codition_2,codition_3,codition_4,codition_5,codition_6,codition_7, codition_8, codition_9, codition_10,
-            codition_11, codition_12, codition_13, codition_14, codition_15, codition_16, codition_17,codition_18,codition_19,
-            codition_20, codition_21]
-
-location_1 = "europe;" 
-location_2 = "germany;" 
-location_3 = "China;"
-location_4 = "USA;"  
-location_5 = "India;"  
-
-locations = [location_1, location_2, location_3, location_4, location_5]
-
-traffic_location_1 = ""
-traffic_location_2 = "Highway"
-traffic_location_3 = "City"
-traffic_locations = [traffic_location_1, traffic_location_2, traffic_location_3]
-
-base_prompt = "A high quality photo; "
-
+prompt_1 = "A high quality photo; europe" # of a german traffic scene"
+prompt_2 = "A high quality photo; europe;Highway"
+prompt_3 = "A high quality photo; europe;City"
+prompt_4 = "A high quality photo; germany" # of a german traffic scene"
+prompt_5 = "A high quality photo; germany;Highway"
+prompt_6 = "A high quality photo; germany;City"
+promts=[prompt_1,prompt_2,prompt_3,prompt_4,prompt_5,prompt_6]
 ddim_steps = 25 #50
 num_samples = 1
 scale = 9 # 9
@@ -213,19 +179,23 @@ eta = 0
 strength = 0.9
 
 # Replace with the actual path to the folder containing PNG images
-input_folder = 'GTA5/images/train'
-input_folder_label = 'GTA5/labels/train'
+input_folder = 'Datasets/Synthia/train/RAND_CITYSCAPES/RGB'
+input_folder_label = 'Synthia/train/RAND_CITYSCAPES/GT/LABELS'
 # Replace with the actual path to the folder where you want to save the processed images
-output_folder = 'pseudo_target_domain/GTA5/rand_locations_uni_cls_rand_cond'
+output_folder = 'pseudo_target_domain/SYNTHIA/uni_cls_rand_location'
 
 CLASSES = ('road', 'sidewalk', 'building', 'wall', 'fence', 'pole',
             'traffic light', 'traffic sign', 'vegetation', 'terrain', 'sky',
-            'person', 'rider', 'car', 'truck', 'bus', 'train', 'motorcycle',
-            'bicycle')
+            'person', 'rider', 'car', 'truck', 'bus', 'tram/ train/ trolley', 'motorcycle',
+            'bicycle') 
+#  the following classes are not in Synthia terrain, truck, train, 
 # List all PNG files in the input folder
 png_files = [file for file in os.listdir(input_folder) if file.endswith('.png')]
 
 hist = np.zeros(19)
+hist[9] = 100000000000000
+hist[14] = 100000000000000
+hist[16] = 100000000000000
 
 for png_file in png_files:
     file_path = os.path.join(input_folder, png_file)
@@ -246,7 +216,7 @@ for png_file in png_files:
 
     # Process the image
     random.seed()
-    prompt = base_prompt + random.choice(locations) + random.choice(traffic_locations) + ", " + current_least_often_cls_string + ", " + addressed_classes_string + ", " + random.choice(coditions)
+    prompt = random.choice(promts)+ ", " + current_least_often_cls_string + ", " + addressed_classes_string    
     print(prompt)
     result = process_image(file_path, prompt, ddim_steps, num_samples, scale, seed, eta, strength)
     

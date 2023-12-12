@@ -182,7 +182,7 @@ strength = 0.9
 input_folder = 'GTA5/images/train'
 input_folder_label = 'GTA5/labels/train'
 # Replace with the actual path to the folder where you want to save the processed images
-output_folder = 'pseudo_target_domain/uni_cls/'
+output_folder = 'pseudo_target_domain/GTA5/uni_cls/'
 CLASSES = ('road', 'sidewalk', 'building', 'wall', 'fence', 'pole',
             'traffic light', 'traffic sign', 'vegetation', 'terrain', 'sky',
             'person', 'rider', 'car', 'truck', 'bus', 'tram/ train/ trolley', 'motorcycle',
