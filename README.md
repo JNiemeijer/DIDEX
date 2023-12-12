@@ -1,7 +1,9 @@
 ![Fancy logo](assets/didex-light.png#gh-dark-mode-only)
 ![Fancy logo](assets/didex-dark.png#gh-light-mode-only)  
-  
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/generalization-by-adaptation-diffusion-based/domain-generalization-on-gta-to-avg)](https://paperswithcode.com/sota/domain-generalization-on-gta-to-avg?p=generalization-by-adaptation-diffusion-based)  
 ### [Paper](https://arxiv.org/abs/2312.01850) 
+
 
  **Generalization by Adaptation: Diffusion-Based Domain Extension for Domain-Generalized Semantic Segmentation**<br>
 [Joshua Niemeijer*](https://scholar.google.com/citations?user=SK0mAJ0AAAAJ&hl), [Manuel Schwonberg*](https://scholar.google.com/citations?user=eqsXwGIAAAAJ&hl), [Jan-Aike Termöhlen*](https://scholar.google.com/citations?user=LkhzlxIAAAAJ&hl), [Nico M. Schmidt](https://scholar.google.com/citations?user=Kaei5zsAAAAJ&hl), and [Tim Fingscheidt](https://scholar.google.com/citations?user=KDgUWRMAAAAJ&hl)<br>
